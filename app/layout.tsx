@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Manrope, Montserrat } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import Image from 'next/image'
 import './globals.css'
 
@@ -84,6 +85,7 @@ export default function RootLayout({
             </div>
           </footer>
         </div>
+        <Analytics />
       </body>
     </html>
   )

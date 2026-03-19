@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ateliers, getAtelier } from '@/lib/ateliers'
 import { CheckoutButton } from '@/components/checkout-button'
+import { StickyCTA } from '@/components/sticky-cta'
 import {
   Check,
   Clock,
@@ -29,10 +30,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const atelier = getAtelier(slug)
   if (!atelier) return {}
+  const ogUrl = `/api/og?title=${encodeURIComponent(atelier.title)}&subtitle=${encodeURIComponent('Atelier intensif · 2h · par mAIjin Academy')}`
   return {
     title: `${atelier.title} | mAIjin Academy`,
     description: atelier.subheadline,
-    openGraph: { title: atelier.title, description: atelier.subheadline, type: 'website' },
+    openGraph: {
+      title: atelier.title,
+      description: atelier.subheadline,
+      type: 'website',
+      images: [{ url: ogUrl, width: 1200, height: 630 }],
+    },
+    twitter: { card: 'summary_large_image', title: atelier.title, description: atelier.subheadline, images: [ogUrl] },
   }
 }
 
@@ -41,8 +49,37 @@ export default async function AtelierPage({ params }: Props) {
   const atelier = getAtelier(slug)
   if (!atelier || atelier.status !== 'available') notFound()
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: atelier.title,
+    description: atelier.subheadline,
+    provider: {
+      '@type': 'Organization',
+      name: 'mAIjin Academy',
+      url: 'https://maijin-academy.vercel.app',
+      address: { '@type': 'PostalAddress', addressLocality: 'Genève', addressCountry: 'CH' },
+    },
+    offers: {
+      '@type': 'Offer',
+      price: atelier.price,
+      priceCurrency: atelier.currency,
+      availability: 'https://schema.org/InStock',
+    },
+    hasCourseInstance: {
+      '@type': 'CourseInstance',
+      courseMode: 'online',
+      duration: 'PT2H',
+      instructor: { '@type': 'Person', name: 'Jean-Baptiste Berthoux', jobTitle: 'Chief AI Officer' },
+    },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '3500', bestRating: '5' },
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <StickyCTA price={atelier.price} currency={atelier.currency} slug={slug} />
+
       {/* ════════════════════════════════════════════════
           HERO — Big Promise + Curiosity (Sugarman)
           "The sole purpose of the first sentence is to get

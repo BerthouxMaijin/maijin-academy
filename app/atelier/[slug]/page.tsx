@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import { ateliers, getAtelier } from '@/lib/ateliers'
 import { CheckoutButton } from '@/components/checkout-button'
 import { StickyCTA } from '@/components/sticky-cta'
@@ -376,7 +377,7 @@ export default async function AtelierPage({ params }: Props) {
                 &laquo;&nbsp;Son approche à la fois claire, rigoureuse et inspirante m&apos;a permis de plonger concrètement dans les outils IA. Je me sens désormais armé pour accompagner les organisations.&nbsp;&raquo;
               </p>
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-pink-soft flex items-center justify-center text-sm font-bold text-pink">AP</div>
+                <Image src="/alexandre-pahud.jpg" alt="Alexandre Pahud" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
                 <div>
                   <p className="text-sm font-semibold text-navy">Alexandre Pahud</p>
                   <p className="text-xs text-text-muted">Co-fondateur, Swiss Governance Hub</p>
@@ -388,7 +389,7 @@ export default async function AtelierPage({ params }: Props) {
                 &laquo;&nbsp;Après seulement trois sessions, je maîtrise bien mieux le prompt engineering. Un gain de temps précieux et des contenus IA qualitatifs et compétitifs.&nbsp;&raquo;
               </p>
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-pink-soft flex items-center justify-center text-sm font-bold text-pink">MH</div>
+                <Image src="/melanie-hong.jpg" alt="Mélanie Hong" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
                 <div>
                   <p className="text-sm font-semibold text-navy">Mélanie Hong</p>
                   <p className="text-xs text-text-muted">Podcast strategist &amp; marketer</p>
@@ -400,7 +401,7 @@ export default async function AtelierPage({ params }: Props) {
                 &laquo;&nbsp;Jean-Baptiste est hyper pédagogue, structuré et généreux. Je repars avec des idées et des outils directement activables. Un vrai booster d&apos;efficacité.&nbsp;&raquo;
               </p>
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-pink-soft flex items-center justify-center text-sm font-bold text-pink">LG</div>
+                <Image src="/laurent-gautier.jpg" alt="Laurent Gautier" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
                 <div>
                   <p className="text-sm font-semibold text-navy">Laurent Gautier</p>
                   <p className="text-xs text-text-muted">Directeur des Opérations, Orange Advertising</p>
@@ -429,9 +430,7 @@ export default async function AtelierPage({ params }: Props) {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="card flex flex-col items-center gap-8 p-8 sm:flex-row sm:p-12">
-            <div className="flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-full bg-pink text-white text-3xl font-bold">
-              JB
-            </div>
+            <Image src="/jean-baptiste-berthoux.jpg" alt="Jean-Baptiste Berthoux" width={96} height={96} className="h-24 w-24 flex-shrink-0 rounded-full object-cover" />
             <div className="text-center sm:text-left">
               <h2 className="mb-1 text-2xl font-bold">Jean-Baptiste Berthoux</h2>
               <p className="mb-4 font-medium text-pink">Chief AI Officer &middot; Co-fondateur mAIjin &middot; Genève</p>

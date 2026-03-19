@@ -1,6 +1,7 @@
 import { ateliers } from '@/lib/ateliers'
 import { ArrowRight, Users, BookOpen, Building2 } from 'lucide-react'
 import Link from 'next/link'
+import { EmailCapture } from '@/components/email-capture'
 
 export default function HomePage() {
   const available = ateliers.filter((a) => a.status === 'available')
@@ -108,7 +109,7 @@ export default function HomePage() {
               </h3>
               <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2">
                 {comingSoon.map((atelier) => (
-                  <div key={atelier.slug} className="card flex flex-col p-6 opacity-50">
+                  <div key={atelier.slug} className="card flex flex-col p-6">
                     <div className="mb-3 flex items-center justify-between">
                       <span className="text-3xl">{atelier.emoji}</span>
                       <span className="rounded-full bg-gray-100 px-3 py-1 text-xs text-text-muted">
@@ -116,7 +117,9 @@ export default function HomePage() {
                       </span>
                     </div>
                     <h4 className="mb-2 text-lg font-bold text-navy">{atelier.title}</h4>
-                    <p className="text-sm text-text-body">{atelier.description}</p>
+                    <p className="text-sm text-text-body mb-4">{atelier.description}</p>
+                    <p className="text-xs text-text-muted mb-3">Soyez prévenu·e du lancement :</p>
+                    <EmailCapture context="coming-soon" />
                   </div>
                 ))}
               </div>

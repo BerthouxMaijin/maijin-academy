@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Manrope, Montserrat } from 'next/font/google'
+import Image from 'next/image'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -24,13 +25,9 @@ export default function RootLayout({
           {/* Nav - matching maijin.ch: frosted, sticky */}
           <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md">
             <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-              <a href="/" className="flex items-center gap-1.5">
-                <span className="text-xl font-bold tracking-tight" style={{ fontFamily: 'var(--font-manrope)' }}>
-                  <span className="text-pink">M</span>
-                  <span className="text-navy">AI</span>
-                  <span className="text-navy">JIN</span>
-                </span>
-                <span className="text-text-muted text-sm font-medium ml-1">Academy</span>
+              <a href="/" className="flex items-center gap-2">
+                <Image src="/logo-maijin.png" alt="mAIjin" width={100} height={30} className="h-7 w-auto" />
+                <span className="text-text-muted text-sm font-medium border-l border-gray-200 pl-2">Academy</span>
               </a>
               <div className="flex items-center gap-5 sm:gap-7">
                 <a
@@ -62,10 +59,9 @@ export default function RootLayout({
             <div className="mx-auto max-w-6xl px-6 py-12">
               <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
                 <div>
-                  <div className="flex items-center gap-1.5 text-xl font-bold" style={{ fontFamily: 'var(--font-manrope)' }}>
-                    <span className="text-pink">M</span>
-                    <span>AIJIN</span>
-                    <span className="text-gray-400 text-sm font-medium ml-1">Academy</span>
+                  <div className="flex items-center gap-2">
+                    <Image src="/logo-maijin-footer.png" alt="mAIjin" width={100} height={30} className="h-7 w-auto brightness-0 invert" />
+                    <span className="text-gray-400 text-sm font-medium border-l border-white/20 pl-2">Academy</span>
                   </div>
                   <p className="mt-3 max-w-xs text-sm text-gray-400">
                     Formations IA intensives pour professionnels. Par mAIjin, experts en IA à Genève.

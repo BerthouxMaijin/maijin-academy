@@ -18,9 +18,9 @@ export default async function FormationPage({ params }: Props) {
   const atelier = getAtelier(slug)
   if (!atelier) notFound()
 
-  const chapters = atelier.modules.map((mod, i) => ({
+  const chapters = atelier.programme.map((mod, i) => ({
     title: mod.title,
-    duration: i === 2 ? '45 min' : '25 min',
+    duration: mod.duration || (i === 2 ? '45 min' : '25 min'),
     videoUrl: null as string | null,
     completed: false,
   }))

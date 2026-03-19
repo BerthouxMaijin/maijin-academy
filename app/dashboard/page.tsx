@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 
 export default function DashboardPage() {
   // TODO: Fetch user's purchased ateliers from database
-  // For now, show a placeholder dashboard
   const purchased = [
     {
       slug: 'copilot',
@@ -24,26 +23,22 @@ export default function DashboardPage() {
       <div className="mx-auto max-w-4xl">
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Mon espace</h1>
-          <p className="mt-2 text-gray-400">
+          <p className="mt-2 text-text-secondary">
             Retrouvez vos formations et replays
           </p>
         </div>
 
-        {/* Success banner */}
-        {/* This would be shown conditionally based on ?success=true query param */}
-
-        {/* Purchased formations */}
         <div className="space-y-4">
           <h2 className="text-xl font-semibold">Mes formations</h2>
 
           {purchased.length === 0 ? (
-            <div className="glass-card p-12 text-center">
-              <p className="mb-4 text-gray-400">
+            <div className="card p-12 text-center">
+              <p className="mb-4 text-text-secondary">
                 Vous n&apos;avez pas encore de formation.
               </p>
               <Link
                 href="/#formations"
-                className="inline-flex rounded-xl bg-accent/10 px-6 py-3 text-sm font-medium text-accent-light transition-all hover:bg-accent/20"
+                className="inline-flex rounded-xl bg-primary-soft px-6 py-3 text-sm font-medium text-primary transition-all hover:bg-indigo-100"
               >
                 Découvrir les ateliers
               </Link>
@@ -54,14 +49,14 @@ export default function DashboardPage() {
                 <Link
                   key={item.slug}
                   href={`/dashboard/formation/${item.slug}`}
-                  className="glass-card group flex items-center gap-6 p-6 transition-all duration-300 hover:border-accent/30"
+                  className="card group flex items-center gap-6 p-6"
                 >
                   <span className="text-4xl">{item.emoji}</span>
                   <div className="flex-1">
-                    <h3 className="font-semibold group-hover:text-accent-light transition-colors">
+                    <h3 className="font-semibold group-hover:text-primary transition-colors">
                       {item.title}
                     </h3>
-                    <div className="mt-2 flex items-center gap-4 text-sm text-gray-400">
+                    <div className="mt-2 flex items-center gap-4 text-sm text-text-muted">
                       <span className="flex items-center gap-1.5">
                         <Clock className="h-4 w-4" />
                         2h de contenu
@@ -72,7 +67,7 @@ export default function DashboardPage() {
                       </span>
                     </div>
                   </div>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent-light group-hover:bg-accent/20 transition-all">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-soft text-primary group-hover:bg-indigo-100 transition-all">
                     <Play className="h-5 w-5 ml-0.5" />
                   </div>
                 </Link>

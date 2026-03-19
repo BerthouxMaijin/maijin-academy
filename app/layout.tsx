@@ -18,25 +18,24 @@ export default function RootLayout({
   return (
     <html lang="fr" className={inter.className}>
       <body className="antialiased">
-        <div className="aurora" />
-        <div className="grid-bg relative z-10 min-h-screen flex flex-col">
-          {/* Navigation */}
-          <nav className="sticky top-0 z-50 border-b border-border/50 bg-midnight/80 backdrop-blur-xl">
+        <div className="relative min-h-screen flex flex-col">
+          {/* Navigation - light, clean, matching mAIjin.ch */}
+          <nav className="sticky top-0 z-50 border-b border-card-border bg-white/90 backdrop-blur-md">
             <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
               <a href="/" className="flex items-center gap-2 text-xl font-bold">
                 <span className="gradient-text">mAIjin</span>
-                <span className="text-gray-400 font-light">Academy</span>
+                <span className="text-text-secondary font-light">Academy</span>
               </a>
               <div className="flex items-center gap-4 sm:gap-6">
                 <a
                   href="/#formations"
-                  className="hidden sm:block text-sm text-gray-400 hover:text-white transition-colors"
+                  className="hidden sm:block text-sm text-text-secondary hover:text-text transition-colors"
                 >
                   Formations
                 </a>
                 <a
                   href="/dashboard"
-                  className="rounded-lg border border-border px-4 py-2 text-sm text-gray-300 hover:border-accent/50 hover:text-white transition-all"
+                  className="rounded-lg border border-card-border px-4 py-2 text-sm text-text-secondary hover:border-primary/40 hover:text-primary transition-all"
                 >
                   Mon espace
                 </a>
@@ -47,23 +46,38 @@ export default function RootLayout({
           {/* Content */}
           <main className="flex-1">{children}</main>
 
-          {/* Footer */}
-          <footer className="border-t border-border/50 py-12">
-            <div className="mx-auto max-w-6xl px-6">
-              <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="gradient-text font-bold">mAIjin</span>
-                  <span className="text-gray-500 font-light">Academy</span>
+          {/* Footer - dark navy matching mAIjin.ch */}
+          <footer className="bg-navy text-white">
+            <div className="mx-auto max-w-6xl px-6 py-12">
+              <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
+                <div>
+                  <div className="flex items-center gap-2 text-xl font-bold">
+                    <span className="text-indigo-400">mAIjin</span>
+                    <span className="text-slate-400 font-light">Academy</span>
+                  </div>
+                  <p className="mt-2 text-sm text-slate-400">
+                    Formations IA intensives pour professionnels
+                  </p>
                 </div>
-                <div className="flex items-center gap-6 text-sm text-gray-500">
-                  <a href="mailto:contact@maijin.ch" className="hover:text-gray-300 transition-colors">
-                    Contact
+                <div className="flex items-center gap-6 text-sm text-slate-400">
+                  <a
+                    href="https://maijin.ch"
+                    className="hover:text-white transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    maijin.ch
                   </a>
-                  <span>Genève, Suisse</span>
+                  <a
+                    href="mailto:contact@maijin.ch"
+                    className="hover:text-white transition-colors"
+                  >
+                    contact@maijin.ch
+                  </a>
                 </div>
-                <p className="text-sm text-gray-600">
-                  &copy; {new Date().getFullYear()} mAIjin SA
-                </p>
+                <div className="text-sm text-slate-500">
+                  <p>&copy; {new Date().getFullYear()} mAIjin SA &middot; Genève, Suisse</p>
+                </div>
               </div>
             </div>
           </footer>

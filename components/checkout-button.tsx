@@ -12,7 +12,7 @@ export function CheckoutButton({
   slug: string
   price: number
   currency: string
-  variant?: 'default' | 'large'
+  variant?: 'default' | 'large' | 'hero'
 }) {
   const [loading, setLoading] = useState(false)
 
@@ -36,21 +36,28 @@ export function CheckoutButton({
     setLoading(false)
   }
 
-  const isLarge = variant === 'large'
+  const baseClasses =
+    'inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all disabled:opacity-60 disabled:cursor-wait cursor-pointer'
+
+  const variantClasses = {
+    hero: 'bg-white text-primary shadow-lg hover:bg-indigo-50 hover:shadow-xl hover:-translate-y-0.5 px-10 py-5 text-lg',
+    large:
+      'cta-btn px-10 py-5 text-lg',
+    default:
+      'cta-btn w-full px-8 py-3.5 text-sm',
+  }
 
   return (
     <button
       onClick={handleCheckout}
       disabled={loading}
-      className={`cta-glow inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 font-semibold text-white transition-all hover:from-indigo-500 hover:to-violet-500 disabled:opacity-60 disabled:cursor-wait cursor-pointer ${
-        isLarge ? 'px-10 py-5 text-lg' : 'w-full px-8 py-3.5 text-sm'
-      }`}
+      className={`${baseClasses} ${variantClasses[variant]}`}
     >
       {loading ? (
         'Redirection vers le paiement...'
       ) : (
         <>
-          <Zap className={isLarge ? 'h-5 w-5' : 'h-4 w-4'} />
+          <Zap className={variant === 'default' ? 'h-4 w-4' : 'h-5 w-5'} />
           Réserver ma place — {price} {currency}
         </>
       )}
